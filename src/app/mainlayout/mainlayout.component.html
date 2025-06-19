@@ -1,0 +1,29 @@
+    <div class="dashboard-container">
+      <aside class="sidebar">
+        <h2>Personal Budget Tracker</h2>
+        <nav>
+          <ul>
+            <li routerLinkActive="active"><a [routerLink]="['/dashboard']">Dashboard</a></li>
+            <li routerLinkActive="active"><a [routerLink]="['/transactions']">Transactions</a></li>
+            <li routerLinkActive="active"><a [routerLink]="['/budget']">Budget</a></li>
+          </ul>
+        </nav>
+      </aside>
+  
+      <div class="main-area">
+        <header class="top-bar">
+          <div class="user-section">
+            <div class="user-icon">👤</div>
+            <strong class="user-name">{{ userName | titlecase }}</strong>
+          </div>
+  
+          <div class="logout-button">
+            <button (click)="logout()">Logout</button>
+          </div>
+        </header>
+  
+        <main class="main-content">
+          <router-outlet></router-outlet>
+        </main>
+      </div>
+    </div>  

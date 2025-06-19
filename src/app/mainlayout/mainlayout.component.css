@@ -1,0 +1,87 @@
+/* Container setup */
+.dashboard-container {
+    display: flex;
+    height: 100vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  /* Sidebar styling */
+  .sidebar {
+    width: 220px;
+    background-color: #2e3b4e;
+    color: #fff;
+    padding: 20px;
+  }
+  
+  .sidebar h2 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+  }
+  
+  .sidebar nav ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .sidebar nav ul li {
+    margin: 10px 0;
+  }
+  
+  .sidebar nav ul li a {
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  .sidebar nav ul li.active a {
+    font-weight: bold;
+    color: #ffd700;
+  }
+  
+  /* Main area styling */
+  .main-area {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Top bar styling */
+  .top-bar {
+    background-color: #f4f4f4;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .user-section {
+    display: flex;
+    align-items: center;
+  }
+  
+  .user-icon {
+    font-size: 1.5rem;
+    margin-right: 10px;
+  }
+  
+  .logout-button button {
+    padding: 5px 12px;
+    background-color: #d9534f;
+    border: none;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .logout-button button:hover {
+    background-color: #c9302c;
+  }
+  
+  /* Main content styling */
+  .main-content {
+    flex-grow: 1;
+    padding: 20px;
+    background-color: #f9f9f9;
+    overflow-y: auto;
+  }
+  

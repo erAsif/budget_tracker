@@ -1,0 +1,84 @@
+<div class="transactions-container">
+    <h2>Manage Transactions</h2>
+  
+    <!-- Filter Section -->
+    <div class="filters">
+      <label>
+        Date:
+        <input type="date" [(ngModel)]="filter.date" (change)="applyFilters()" />
+      </label>
+  
+      <label>
+        Category:
+        <select [(ngModel)]="filter.category" (change)="applyFilters()">
+          <option value="">All</option>
+          <option *ngFor="let cat of allCategory" [value]="cat.name">{{ cat.name }}</option>
+        </select>
+      </label>
+  
+      <label>
+        Amount:
+        <input type="number" [(ngModel)]="filter.amount" placeholder="Amount" (input)="applyFilters()" />
+      </label>
+    </div>
+  
+    <!-- Add Transaction Form -->
+    <form (ngSubmit)="addTransaction()" class="transaction-form">
+      <input type="number" [(ngModel)]="newTransaction.amount" name="amount" placeholder="Amount" required />
+      <select [(ngModel)]="newTransaction.category" name="category" required>
+        <option disabled value="">Select Category</option>
+        <option *ngFor="let cat of allCategory" [value]="cat.name">{{ cat.name }}</option>
+      </select>
+      <input type="date" [(ngModel)]="newTransaction.date" name="date" required />
+      <button type="submit">Add</button>
+    </form>
+  
+    <!-- Transactions List -->
+    <table class="transaction-table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Amount</th>
+          <th>Category</th>
+          <th>Date</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let trans of paginatedTransactions(); let i = index">
+          <td>{{ i + 1 + (currentPage - 1) * pageSize }}</td>
+  
+          <td *ngIf="editingTransaction?.id !== trans.id">{{ trans.amount }}</td>
+          <td *ngIf="editingTransaction?.id !== trans.id">{{ trans.category }}</td>
+          <td *ngIf="editingTransaction?.id !== trans.id">{{ trans.date }}</td>
+  
+          <!-- Editing Row -->
+          <td *ngIf="editingTransaction?.id === trans.id">
+            <input type="number" [(ngModel)]="editingTransaction.amount">
+          </td>
+          <td *ngIf="editingTransaction?.id === trans.id">
+            <input [(ngModel)]="editingTransaction.category">
+          </td>
+          <td *ngIf="editingTransaction?.id === trans.id">
+            <input type="date" [(ngModel)]="editingTransaction.date">
+          </td>
+  
+          <td>
+            <button *ngIf="editingTransaction?.id !== trans.id" (click)="editTransaction(trans)">Edit</button>
+            <button *ngIf="editingTransaction?.id !== trans.id" (click)="deleteTransaction(trans.id)">Delete</button>
+  
+            <button *ngIf="editingTransaction?.id === trans.id" (click)="saveEditedTransaction()">Save</button>
+            <button *ngIf="editingTransaction?.id === trans.id" (click)="cancelEdit()">Cancel</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <!-- Pagination -->
+    <div class="pagination">
+      <button (click)="prevPage()" [disabled]="currentPage === 1">Previous</button>
+      <span>Page {{ currentPage }}</span>
+      <button (click)="nextPage()" [disabled]="!hasMorePages()">Next</button>
+    </div>
+  </div>
+  

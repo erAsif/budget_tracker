@@ -1,0 +1,66 @@
+.summary-cards {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+  
+  .card {
+    flex: 1;
+    padding: 1rem;
+    background-color: #f4f4f4;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    font-size: 1.1rem;
+  }
+  
+  .charts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+  }
+  
+  .chart-card {
+    flex: 1 1 45%;
+    padding: 1rem;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  
+  .chart-card img {
+    width: 100%;
+    height: auto;
+    margin: 1rem 0;
+  }
+  
+  .legend {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .legend li {
+    margin: 0.3rem 0;
+    display: flex;
+    align-items: center;
+  }
+  
+  .dot {
+    height: 12px;
+    width: 12px;
+    border-radius: 50%;
+    margin-right: 8px;
+    display: inline-block;
+  }
+  
+  .dot.salary {
+    background-color: green;
+  }
+  
+  .dot.groceries {
+    background-color: orange;
+  }
+  
+  .dot.entertainment {
+    background-color: purple;
+  }
+  

@@ -1,0 +1,40 @@
+<div class="budget-container">
+    <h2>Budget Management</h2>
+  
+    <!-- Input Section -->
+    <div class="budget-inputs">
+      <label>
+        Month:
+        <input type="number" [(ngModel)]="month" min="1" max="12" />
+      </label>
+      <label>
+        Year:
+        <input type="number" [(ngModel)]="year" />
+      </label>
+      <label>
+        Amount:
+        <input type="number" [(ngModel)]="amount" />
+      </label>
+      <button (click)="submitBudget()">Submit Budget</button>
+    </div>
+  
+    <!-- Summary Display -->
+    <div *ngIf="summary" class="summary-section">
+      <h3>Budget Summary</h3>
+      <p><strong>Budgeted:</strong> ₹{{ summary.budgeted_amount }}</p>
+      <p><strong>Actual Expense:</strong> ₹{{ summary.actual_expense }}</p>
+      <p><strong>Remaining:</strong> ₹{{ summary.remaining_balance }}</p>
+    </div>
+  
+    <div *ngIf="error" class="error-message">
+      ⚠️ {{ error }}
+    </div>
+  
+    <!-- D3 Chart -->
+    <div *ngIf="summary" class="chart-container">
+      <h3>Budget vs. Expenses</h3>
+      <app-budget-chart></app-budget-chart>
+      <!-- <svg width="300" height="300" id="budgetChart"></svg> -->
+    </div>
+  </div>
+  
